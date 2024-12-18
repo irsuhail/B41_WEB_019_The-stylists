@@ -3,9 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Filter Dropdown</title>
+    <link rel="stylesheet" href="Cards.css">
 </head>
 <body>
-    
+     <!-- Main Container -->
+     <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <input type="text" class="search-bar" placeholder="Search cards or more">
+            <button class="move-money-btn" onclick="handleMoveMoney()">Move Money &#9662;</button>
+            <div class="avatar">JB</div>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-container">
+            <button class="add-filter-btn" onclick="toggleFilterPopup()">&#x25B3; Add Filter</button>
+            <span class="no-filters">No filters applied</span>
+        </div>
+
+        <!-- Filter Popup -->
+        <div class="filter-popup" id="filterPopup">
+            <div class="filter-sidebar">
+                <ul>
+                    <li class="tab active" onclick="changeTab(this, 'type')">Type</li>
+                    <li class="tab" onclick="changeTab(this, 'status')">Status</li>
+                    <li class="tab" onclick="changeTab(this, 'cardholder')">Cardholder</li>
+                    <li class="tab" onclick="changeTab(this, 'date')">Date created</li>
+                    <li class="tab" onclick="changeTab(this, 'spending')">Spending</li>
+                    <li class="tab" onclick="changeTab(this, 'merchant')">Merchant Lock</li>
+                    <li class="tab" onclick="changeTab(this, 'category')">Category Lock</li>
+                </ul>
+            </div>
+            <div class="filter-content">
+                <div class="filter-section">
+                    <label><input type="radio" name="type" value="physical"> Physical only</label>
+                    <label><input type="radio" name="type" value="virtual"> Virtual only</label>
+                    <label><input type="radio" name="type" value="either" checked> Either</label>
+                </div>
+                <hr>
+                <div class="accounts">
+                    <h4>Accounts <span class="select-all" onclick="selectAllCheckboxes()">Select All</span></h4>
+                    <label><input type="checkbox" class="account-checkbox"> Credit</label>
+                    <label><input type="checkbox" class="account-checkbox"> Debit</label>
+                    <label><input type="checkbox" class="account-checkbox"> AR</label>
+                    <label><input type="checkbox" class="account-checkbox"> Checking ••0297</label>
+                    <label><input type="checkbox" class="account-checkbox"> Ops / Payroll</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="Cards.js"></script>
 </body>
 </html>

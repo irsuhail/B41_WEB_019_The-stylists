@@ -1,0 +1,139 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #fff;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    width: 300px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.move-money-btn {
+    background-color: #6c5ce7;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+.avatar {
+    background: #cce7eb;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+/* Add Filter */
+.filter-container {
+    display: flex;
+    align-items: center;
+}
+
+.add-filter-btn {
+    background: #f5f5fa;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.no-filters {
+    margin-left: 10px;
+    color: #aaa;
+}
+
+/* Filter Popup */
+.filter-popup {
+    display: none; /* Hide popup initially */
+    position: absolute;
+    top: 150px;
+    left: 25%;
+    width: 50%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    overflow: hidden;
+}
+
+
+.filter-sidebar {
+    width: 30%;
+    background: #f9f9f9;
+    border-right: 1px solid #ddd;
+}
+
+.filter-sidebar ul {
+    list-style: none;
+}
+
+.tab {
+    padding: 12px;
+    cursor: pointer;
+    border-left: 4px solid transparent;
+    color: #555;
+}
+
+.tab.active {
+    border-left-color: #6c5ce7;
+    background: #e6e6fa;
+    color: #333;
+}
+
+.filter-content {
+    width: 70%;
+    padding: 20px;
+}
+
+.filter-section label,
+.accounts label {
+    display: block;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.accounts h4 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.select-all {
+    color: #6c5ce7;
+    cursor: pointer;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
