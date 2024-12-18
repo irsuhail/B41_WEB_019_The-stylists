@@ -36,6 +36,23 @@ function handleMoveMoney() {
   alert("Move Money button clicked!");
 }
 
+// Tabs
+document.addEventListener("DOMContentLoaded", function () {
+  // Get all tabs
+  const tabs = document.querySelectorAll(".tab");
+
+  // Add click event listener to each tab
+  tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+          // Remove 'active' class from all tabs
+          tabs.forEach(t => t.classList.remove("active"));
+          
+          // Add 'active' class to the clicked tab
+          tab.classList.add("active");
+      });
+  });
+});
+
 const firstNames = [
   "John",
   "Jane",
@@ -100,7 +117,7 @@ const cardCategories = ["Virtual", "Physical"];
 const accountTypes = ["Credit Card", "Payroll", "AR"];
 
 const UserCard = [];
-for (let i = 0; i < 200; i++) {
+for (let i = 0;i<200;i++) {
   const user = {
     cardholder_Name: `${
       firstNames[Math.floor(Math.random() * firstNames.length)]
@@ -121,3 +138,26 @@ for (let i = 0; i < 200; i++) {
   UserCard.push(user);
 }
 // console.log(UserCard);
+
+
+// Function to populate the table dynamically
+function populateTable(data) {
+  const tableBody = document.getElementById("cardsBody");
+
+  // Loop through the data and create table rows
+  data.forEach((card) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+          <td>${card.cardholder_Name}</td>
+          <td>${card.card}</td>
+          <td>${card.Spend_This_Month}</td>
+          <td>${card.Card_Category}</td>
+          <td>${card.Card_Account}</td>
+      `;
+
+      tableBody.appendChild(row);
+  });
+}
+
+// Call the function to populate the table
+populateTable(UserCard);
