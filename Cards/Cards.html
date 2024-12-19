@@ -1,11 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filter Dropdown</title>
+    <link rel="stylesheet" href="Cards.css" />
+  </head>
+  <body>
+    <!-- Main Container -->
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <input
+          type="text"
+          class="search-bar"
+          placeholder="Search cards or more"
+        />
+        <button class="move-money-btn" onclick="handleMoveMoney()">
+          Move Money &#9662;
+        </button>
+        <div class="avatar">JB</div>
+      </div>
+
+      <!-- Cards Header -->
+      <div class="cards-header">
+        <h2>Cards</h2>
+        <!-- Create Card Button -->
+        <button class="create-card-btn" id="createCardBtn">+ Create Card</button>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <span class="tab active">Manage</span>
+        <span class="tab">Subscriptions</span>
+      </div>
+
+      <!-- Filter Section -->
+      <div class="filter-container">
+        <button class="add-filter-btn" onclick="toggleFilterPopup()">
+          &#x25B3; Add Filter
+        </button>
+        <span class="no-filters" id="filterSummary">No filters applied</span>
+      </div>
+
+      <!-- Filter Popup -->
+      <div class="filter-popup" id="filterPopup">
+        <div class="filter-sidebar">
+          <ul>
+            <li class="tab active" onclick="changeTab(this,'type')">Type</li>
+            <li class="tab" onclick="changeTab(this,'status')">Status</li>
+            <li class="tab" onclick="changeTab(this,'cardholder')">
+              Cardholder
+            </li>
+            <li class="tab" onclick="changeTab(this,'date')">Date created</li>
+            <li class="tab" onclick="changeTab(this,'spending')">Spending</li>
+            <li class="tab" onclick="changeTab(this,'merchant')">
+              Merchant Lock
+            </li>
+            <li class="tab" onclick="changeTab(this,'category')">
+              Category Lock
+            </li>
+          </ul>
+        </div>
+        <div class="filter-content">
+          <div class="filter-section">
+            <label>
+              <input type="radio" name="type" value="physical" />
+              <span>Physical only</span>
+            </label>
+            <label>
+              <input type="radio" name="type" value="virtual" />
+              <span>Virtual only</span>
+            </label>
+            <label>
+              <input type="radio" name="type" value="either" checked />
+              <span>Either</span>
+            </label>
+          </div>
+          <hr />
+          <div class="accounts">
+            <h4>
+              Accounts
+              <span class="select-all" onclick="selectAllCheckboxes()"
+                >Select All</span
+              >
+            </h4>
+            <label>
+              <input type="checkbox" class="account-checkbox" />
+              <span>Credit</span>
+            </label>
+            <label>
+              <input type="checkbox" class="account-checkbox" />
+              <span>Debit</span>
+            </label>
+            <label>
+              <input type="checkbox" class="account-checkbox" />
+              <span>AR</span>
+            </label>
+            <label>
+              <input type="checkbox" class="account-checkbox" />
+              <span>Checking ••0297</span>
+            </label>
+            <label>
+              <input type="checkbox" class="account-checkbox" />
+              <span>Ops / Payroll</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="cards-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Cardholder</th>
+              <th>Card</th>
+              <th>Spent this month</th>
+              <th>Type</th>
+              <th>Account</th>
+            </tr>
+          </thead>
+          <tbody id="cardsBody">
+            <!-- Data will be dynamically populated here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" id="pagination">
+      <button id="prevBtn" onclick="changePage('prev')">Previous</button>
+      <span id="pageInfo"></span>
+      <button id="nextBtn" onclick="changePage('next')">Next</button>
+    </div>
+
+    <!-- Create Card Popup -->
+    <div id="createCardPopup" class="popup" style="display: none;">
+      <div class="popup-content">
+        <h3>Create Card</h3>
+        <form id="createCardForm">
+          <label for="cardholder">Card Holder:</label>
+          <input type="text" id="cardholder" name="cardholder" required>
+          <label for="card">Card:</label>
+          <input type="text" id="card" name="card" required>
+          <label for="spend">Spend This Month:</label>
+          <input type="text" id="spend" name="spend" required>
+          <label for="type">Type:</label>
+          <select id="type" name="type" required>
+            <option value="Office Card">Office Card</option>
+            <option value="Intern Card">Intern Card</option>
+            <option value="Service Card">Service Card</option>
+            <option value="Frozen">Frozen</option>
+          </select>
+          <label for="account">Account:</label>
+          <input type="text" id="account" name="account" required>
+          <button type="submit">Save</button>
+          <button type="button" id="closePopupBtn">Cancel</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="Cards.js"></script>
+  </body>
 </html>
