@@ -1,0 +1,145 @@
+:root {
+    --background: #e5e7f3;
+    --foreground: #111;
+    --card: #fff;
+    --border: #ddd;
+    --ring: #aaa;
+    --muted: #666;
+    --primary-filled: #5266eb; 
+    --primary-empty: #d1d5f8; 
+    --primary-foreground: #fff;
+    --form-background: #fafbfd; 
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .container {
+    background-color: var(--card);
+    padding: 30px; 
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px; 
+    width: 100%;
+  }
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: var(--background);
+    z-index: 100;
+  }
+
+  .header img {
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+  }
+
+  .header a {
+    color: black;
+    text-decoration: none;
+    font-size: 16px; 
+    font-weight: 750; 
+  }
+
+  .header a:hover {
+    text-decoration: underline;
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--foreground);
+  }
+
+  p {
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .half {
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted); 
+    margin-bottom: 5px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  input:focus {
+    border-color: var(--ring);
+    outline: none;
+  }
+
+  small {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .submit-container {
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  .btn-primary {
+    background-color: var(--primary-empty); 
+    color: var(--primary-foreground);
+    padding: 8px 16px;
+    border-radius: 15px;
+    border: none; 
+    cursor: not-allowed; 
+    font-size: 14px;
+    width: auto;
+    letter-spacing: 2px;
+  }
+
+  .btn-primary.enabled {
+    background-color: var(--primary-filled); 
+    cursor: pointer;
+  }
+
+  .footer {
+    margin-top: 20px;
+    font-size: 15px;
+    color: var(--muted);
+  }
+
+  .footer a {
+    color: var(--foreground);
+    text-decoration: underline;
+  }
+
+  form {
+    background-color: var(--form-background);
+    padding: 15px;
+    border-radius: 10px;
+  }
