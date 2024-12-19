@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Header with Buttons and Welcome Section</title>
+    <link rel="stylesheet" href="mercury.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <script
+      src="https://kit.fontawesome.com/c7d87391e0.js"
+      crossorigin="anonymous"
+    ></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <!-- Left Content: Logo and Welcome Section -->
+        <div class="header-content">
+            <div class="logo">Your Logo</div>
+            <div class="welcome-text">
+                <h1>Welcome to the Mercury Demo.</h1>
+                <a href="https://mercury.com" target="_blank">Learn More About Mercury</a>
+            </div>
+        </div>
+
+        <!-- Right Content: Buttons -->
+        <div class="header-buttons">
+            <button class="btn btn-demo">Customize Demo</button>
+            <button class="btn btn-open-account">Open Account ></button>
+        </div>
+    </div>
+
+    <!-- // search box -->
+    <div class="search-container">
+        <div class="search-bar-wrapper">
+            <!-- Search Bar with placeholder -->
+            <input type="text" class="search-bar" placeholder="Search or jump to">
+            <span class="shortcut">Ctrl K</span>
+            <!-- Search Icon on the left -->
+            <i class="fas fa-search search-icon"></i>
+        </div>
+    </div>
+
+    <!-- Button container on the right -->
+    <div class="button-container1">
+        <!-- Money button -->
+        <div class="button1">
+            <i class="btn save money ">Save money</i>
+        </div>
+        <!-- Bell button with bell icon -->
+        <div class="button2">
+            <i class="fas fa-bell"></i>
+        </div>
+        <!-- Profile button -->
+        <div class="button3">
+            <i class="fas fa-user"></i>
+        </div>
+    </div>
+
+
+    <!-- 7 buttons -->
+    <h2 class="h2">Welcome, Jane</h2>
+    <div class="button-container2">
+        <button class="button send-button">Send</button>
+        <button class="button">Request</button>
+        <button class="button">Transfer</button>
+        <button class="button">Deposit</button>
+        <button class="button">Pay Bill</button>
+        <button class="button">Create Invoice</button>
+    </div>
+    <div href="#" class="customize">Customize</a>
+
+
+
+
+
+        <!-- 3 boxes -->
+        <div class="container1">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="font-Style">Credit Card</h3>
+                    <div class="icon">💳</div>
+                </div>
+                <div class="card-body">
+                    <p class="amount">$12,505.87</p>
+                    <div class="progress-bar">
+                        <span class="font-Style" class="balance"></span>
+                        <span class="font-Style" class="pending"></span>
+                    </div>
+                    <div class="details">
+                        <span class="font-Style">Balance</span>
+                        <span class="font-Style">Pending</span>
+                    </div>
+                    <p class="available" class="font-Style">$21,249 available</p>
+                    <div class="footer">
+                        <p class="font-Style">Autopay <span>Dec 24</span></p>
+                        <button class="font-Style">Pay</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Bill Pay</h3>
+                   <div class="card-header-icon"><i class="fa-solid fa-plus" class="card-header-icon-icon"></i></div>
+                </div>
+                <div class="card-body">
+                    <p>Outstanding <span>11</span></p>
+                    <p>Overdue <span>1</span></p>
+                    <p>Due soon <span>-</span></p>
+                    <p class="inbox">Inbox <a href="#">View</a></p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Invoicing</h3>
+                    <button class="icon">➕</button>
+                </div>
+                <div class="card-body">
+                    <p>Overdue <span>4 - $950.00</span></p>
+                    <p>Paid <span>12 - $6K</span></p>
+                    <p>Open <a href="#">12 invoices - $12.3K</a></p>
+                </div>
+            </div>
+        </div>
+        <script src="mercury.js"></script>
+</body>
+
+</html>
