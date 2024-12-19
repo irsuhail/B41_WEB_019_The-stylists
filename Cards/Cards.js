@@ -169,56 +169,61 @@ for (let i = 0; i < 200; i++) {
 }
 // console.log(UserCard);
 
-
 // Toggle Create Card Popup
-document.getElementById('createCardBtn').addEventListener('click', function() {
-  document.getElementById('createCardPopup').style.display = 'flex';
+document.getElementById("createCardBtn").addEventListener("click", function () {
+  document.getElementById("createCardPopup").style.display = "flex";
 });
 
 // Close Popup
-document.getElementById('closePopupBtn').addEventListener('click', function() {
-  document.getElementById('createCardPopup').style.display = 'none';
+document.getElementById("closePopupBtn").addEventListener("click", function () {
+  document.getElementById("createCardPopup").style.display = "none";
 });
 
 // Handle Form Submission to Add Card
-document.getElementById('createCardForm').addEventListener('submit', function(event) {
-  event.preventDefault();
+document
+  .getElementById("createCardForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
 
-  const cardholder = document.getElementById('cardholder').value;
-  const card = document.getElementById('card').value;
-  const spend = document.getElementById('spend').value;
-  const type = document.getElementById('type').value;
-  const account = document.getElementById('account').value;
+    const cardholder = document.getElementById("cardholder").value;
+    const card = document.getElementById("card").value;
+    const spend = document.getElementById("spend").value;
+    const type = document.getElementById("type").value;
+    const account = document.getElementById("account").value;
 
-  // Add new card to the UserCard array
-  const newCard = {
-    cardholder_Name: cardholder,
-    card: card,
-    Spend_This_Month: `$${parseFloat(spend).toLocaleString('en-US', { minimumFractionDigits: 2 })}`,
-    Card_Category: type,
-    Card_Account: account,
-  };
+    // Add new card to the UserCard array
+    const newCard = {
+      cardholder_Name: cardholder,
+      card: card,
+      Spend_This_Month: `$${parseFloat(spend).toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+      })}`,
+      Card_Category: type,
+      Card_Account: account,
+    };
 
-  UserCard.push(newCard);
+    UserCard.push(newCard);
 
-  // Update the table with the new card
-  const tableBody = document.getElementById('cardsBody');
-  const row = document.createElement('tr');
-  row.innerHTML = `
+    // Update the table with the new card
+    const tableBody = document.getElementById("cardsBody");
+    const row = document.createElement("tr");
+    row.innerHTML = `
     <td>${cardholder}</td>
     <td>${card}</td>
-    <td>${`$${parseFloat(spend).toLocaleString('en-US', { minimumFractionDigits: 2 })}`}</td>
+    <td>${`$${parseFloat(spend).toLocaleString("en-US", {
+      minimumFractionDigits: 2,
+    })}`}</td>
     <td>${type}</td>
     <td>${account}</td>
   `;
-  tableBody.appendChild(row);
+    tableBody.appendChild(row);
 
-  // Save updated data to localStorage
-  saveToLocalStorage();
+    // Save updated data to localStorage
+    saveToLocalStorage();
 
-  // Close the popup
-  document.getElementById('createCardPopup').style.display = 'none';
-});
+    // Close the popup
+    document.getElementById("createCardPopup").style.display = "none";
+  });
 
 // Function to populate the table dynamically
 function populateTable(data) {
@@ -250,3 +255,142 @@ function saveToLocalStorage() {
 }
 // Call the function to save the data
 saveToLocalStorage();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let currentPage = 1; // Track current page
+const itemsPerPage = 15; // Number of items to display per page
+
+// Filter and Search Functionality (same as before)
+function filterAndSearchCards() {
+  const searchInput = document.querySelector(".search-bar").value.toLowerCase();
+  const filterType = document.querySelector('input[name="type"]:checked')?.value || "either";
+  const selectedAccounts = Array.from(
+    document.querySelectorAll(".account-checkbox:checked")
+  ).map((checkbox) => checkbox.nextElementSibling.textContent.trim().toLowerCase());
+
+  // Apply filters
+  const filteredCards = UserCard.filter((card) => {
+    const matchesSearch =
+      card.cardholder_Name.toLowerCase().includes(searchInput) ||
+      card.card.toLowerCase().includes(searchInput);
+
+    const matchesType =
+      filterType === "either" || card.Card_Category.toLowerCase() === filterType;
+
+    const matchesAccount =
+      selectedAccounts.length === 0 ||
+      selectedAccounts.some((account) => card.Card_Account.toLowerCase().includes(account));
+
+    return matchesSearch && matchesType && matchesAccount;
+  });
+
+  // After filtering, paginate the results
+  paginate(filteredCards);
+}
+
+// Paginate filtered data and update table
+function paginate(filteredCards) {
+  // Calculate start and end indexes for the current page
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  // Get the data for the current page
+  const paginatedData = filteredCards.slice(startIndex, endIndex);
+
+  // Update the table with the current page's data
+  updateTable(paginatedData);
+
+  // Update pagination controls
+  updatePaginationControls(filteredCards.length);
+}
+
+// Update Table Function
+function updateTable(data) {
+  const tableBody = document.getElementById("cardsBody");
+  tableBody.innerHTML = ""; // Clear existing table rows
+
+  if (data.length === 0) {
+    const noDataRow = document.createElement("tr");
+    noDataRow.innerHTML = `<td colspan="5" style="text-align:center;">No matching records found</td>`;
+    tableBody.appendChild(noDataRow);
+    return;
+  }
+
+  data.forEach((card) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${card.cardholder_Name}</td>
+      <td>${card.card}</td>
+      <td>${card.Spend_This_Month}</td>
+      <td>${card.Card_Category}</td>
+      <td>${card.Card_Account}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+}
+
+// Update pagination controls (Previous, Next, Page Number)
+function updatePaginationControls(totalItems) {
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const pageInfo = document.getElementById("pageInfo");
+
+  // Disable/Enable the Previous and Next buttons based on current page
+  document.getElementById("prevBtn").disabled = currentPage === 1;
+  document.getElementById("nextBtn").disabled = currentPage === totalPages;
+
+  // Update the page number text
+  pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+}
+
+// Handle page changes (Previous, Next)
+function changePage(direction) {
+  if (direction === "prev" && currentPage > 1) {
+    currentPage--;
+  } else if (direction === "next") {
+    currentPage++;
+  }
+
+  // After changing page, re-apply the filters and paginate
+  filterAndSearchCards();
+}
+
+// Event Listeners for Search and Filters
+document.querySelector(".search-bar").addEventListener("input", filterAndSearchCards);
+document.querySelectorAll(".filter-popup input").forEach((input) => {
+  input.addEventListener("change", filterAndSearchCards);
+});
+
+// Populate Table Function (for initial data population)
+function populateTable(data) {
+  const tableBody = document.getElementById("cardsBody");
+  tableBody.innerHTML = ""; // Clear existing table rows
+
+  data.forEach((card) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${card.cardholder_Name}</td>
+      <td>${card.card}</td>
+      <td>${card.Spend_This_Month}</td>
+      <td>${card.Card_Category}</td>
+      <td>${card.Card_Account}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+}
+
+// Initial Population of Table with the first page
+populateTable(UserCard.slice(0, itemsPerPage));
+
+
