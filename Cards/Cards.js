@@ -1,35 +1,65 @@
 // Toggle Filter Popup
 function toggleFilterPopup() {
   const popup = document.getElementById("filterPopup");
-  if (popup.style.display =="flex") {
-    popup.style.display = "none"; // Hide the popup
+  const filterSummary = document.getElementById("filterSummary");
+
+  if (popup.style.display === "flex") {
+    popup.style.display = "none"; // Hide popup
   } else {
-    popup.style.display = "flex"; // Show the popup
+    popup.style.display = "flex"; // Show popup
+
+    // Update filter summary
+    const activeTabs = document.querySelectorAll(".filter-sidebar .tab.active");
+    const selectedFilters = Array.from(activeTabs).map(
+      (tab) => tab.textContent
+    );
+
+    if (selectedFilters.length > 0) {
+      filterSummary.textContent = `Filters applied: ${selectedFilters.join(
+        ", "
+      )}`;
+    } else {
+      filterSummary.textContent = "No filters applied";
+    }
   }
 }
 
-// Change Active Tab
+// Change Active Tab (Filter Selection)
 function changeTab(ele, section) {
-  const tabs = document.querySelectorAll(".tab");
+  const tabs = document.querySelectorAll(".filter-sidebar .tab");
+  const isActive = ele.classList.contains("active");
+
   tabs.forEach((tab) => tab.classList.remove("active"));
-  ele.classList.add("active");
-  console.log(`${section} tab clicked`);
+
+  if (!isActive) {
+    ele.classList.add("active");
+    console.log(`${section} tab selected`);
+  }
 }
 
 // Select All Checkboxes
+document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelectorAll(".filter-sidebar .tab");
+  tabs.forEach((tab) => tab.classList.remove("active")); // Remove active class
+
+  // Ensure filter popup is hidden initially
+  const popup = document.getElementById("filterPopup");
+  popup.style.display = "none";
+});
+
+// Select All Checkboxes
 function selectAllCheckboxes() {
-    const checkboxes = document.querySelectorAll(".account-checkbox");
-    const areAllChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
-  
-    checkboxes.forEach((checkbox) => (checkbox.checked = !areAllChecked));
-  
-    if (areAllChecked) {
-      console.log("All checkboxes deselected");
-    } else {
-      console.log("All checkboxes selected");
-    }
-  }
-  
+  const checkboxes = document.querySelectorAll(".account-checkbox");
+  const areAllChecked = Array.from(checkboxes).every(
+    (checkbox) => checkbox.checked
+  );
+
+  checkboxes.forEach((checkbox) => (checkbox.checked = !areAllChecked));
+
+  console.log(
+    areAllChecked ? "All checkboxes deselected" : "All checkboxes selected"
+  );
+}
 
 // Move Money Button Example
 function handleMoveMoney() {
@@ -42,14 +72,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const tabs = document.querySelectorAll(".tab");
 
   // Add click event listener to each tab
-  tabs.forEach(tab => {
-      tab.addEventListener("click", () => {
-          // Remove 'active' class from all tabs
-          tabs.forEach(t => t.classList.remove("active"));
-          
-          // Add 'active' class to the clicked tab
-          tab.classList.add("active");
-      });
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      // Remove 'active' class from all tabs
+      tabs.forEach((t) => t.classList.remove("active"));
+
+      // Add 'active' class to the clicked tab
+      tab.classList.add("active");
+    });
   });
 });
 
@@ -117,7 +147,7 @@ const cardCategories = ["Virtual", "Physical"];
 const accountTypes = ["Credit Card", "Payroll", "AR"];
 
 const UserCard = [];
-for (let i = 0;i<200;i++) {
+for (let i = 0; i < 200; i++) {
   const user = {
     cardholder_Name: `${
       firstNames[Math.floor(Math.random() * firstNames.length)]
@@ -140,14 +170,64 @@ for (let i = 0;i<200;i++) {
 // console.log(UserCard);
 
 
+// Toggle Create Card Popup
+document.getElementById('createCardBtn').addEventListener('click', function() {
+  document.getElementById('createCardPopup').style.display = 'flex';
+});
+
+// Close Popup
+document.getElementById('closePopupBtn').addEventListener('click', function() {
+  document.getElementById('createCardPopup').style.display = 'none';
+});
+
+// Handle Form Submission to Add Card
+document.getElementById('createCardForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const cardholder = document.getElementById('cardholder').value;
+  const card = document.getElementById('card').value;
+  const spend = document.getElementById('spend').value;
+  const type = document.getElementById('type').value;
+  const account = document.getElementById('account').value;
+
+  // Add new card to the UserCard array
+  const newCard = {
+    cardholder_Name: cardholder,
+    card: card,
+    Spend_This_Month: `$${parseFloat(spend).toLocaleString('en-US', { minimumFractionDigits: 2 })}`,
+    Card_Category: type,
+    Card_Account: account,
+  };
+
+  UserCard.push(newCard);
+
+  // Update the table with the new card
+  const tableBody = document.getElementById('cardsBody');
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td>${cardholder}</td>
+    <td>${card}</td>
+    <td>${`$${parseFloat(spend).toLocaleString('en-US', { minimumFractionDigits: 2 })}`}</td>
+    <td>${type}</td>
+    <td>${account}</td>
+  `;
+  tableBody.appendChild(row);
+
+  // Save updated data to localStorage
+  saveToLocalStorage();
+
+  // Close the popup
+  document.getElementById('createCardPopup').style.display = 'none';
+});
+
 // Function to populate the table dynamically
 function populateTable(data) {
   const tableBody = document.getElementById("cardsBody");
 
   // Loop through the data and create table rows
   data.forEach((card) => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
+    const row = document.createElement("tr");
+    row.innerHTML = `
           <td>${card.cardholder_Name}</td>
           <td>${card.card}</td>
           <td>${card.Spend_This_Month}</td>
@@ -155,9 +235,18 @@ function populateTable(data) {
           <td>${card.Card_Account}</td>
       `;
 
-      tableBody.appendChild(row);
+    tableBody.appendChild(row);
   });
 }
 
 // Call the function to populate the table
 populateTable(UserCard);
+
+// Adding Usercard data in local Storage
+function saveToLocalStorage() {
+  const key = "userCardsData"; // Key for localStorage
+  localStorage.setItem(key, JSON.stringify(UserCard));
+  console.log(`Data saved to localStorage with key: "${key}"`);
+}
+// Call the function to save the data
+saveToLocalStorage();

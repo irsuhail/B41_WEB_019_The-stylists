@@ -25,7 +25,8 @@
       <!-- Cards Header -->
       <div class="cards-header">
         <h2>Cards</h2>
-        <button class="create-card-btn">+ Create Card</button>
+        <!-- Create Card Button -->
+        <button class="create-card-btn" id="createCardBtn">+ Create Card</button>
       </div>
 
       <!-- Tabs -->
@@ -39,24 +40,24 @@
         <button class="add-filter-btn" onclick="toggleFilterPopup()">
           &#x25B3; Add Filter
         </button>
-        <span class="no-filters">No filters applied</span>
+        <span class="no-filters" id="filterSummary">No filters applied</span>
       </div>
 
       <!-- Filter Popup -->
       <div class="filter-popup" id="filterPopup">
         <div class="filter-sidebar">
           <ul>
-            <li class="tab active" onclick="changeTab(this, 'type')">Type</li>
-            <li class="tab" onclick="changeTab(this, 'status')">Status</li>
-            <li class="tab" onclick="changeTab(this, 'cardholder')">
+            <li class="tab active" onclick="changeTab(this,'type')">Type</li>
+            <li class="tab" onclick="changeTab(this,'status')">Status</li>
+            <li class="tab" onclick="changeTab(this,'cardholder')">
               Cardholder
             </li>
-            <li class="tab" onclick="changeTab(this, 'date')">Date created</li>
-            <li class="tab" onclick="changeTab(this, 'spending')">Spending</li>
-            <li class="tab" onclick="changeTab(this, 'merchant')">
+            <li class="tab" onclick="changeTab(this,'date')">Date created</li>
+            <li class="tab" onclick="changeTab(this,'spending')">Spending</li>
+            <li class="tab" onclick="changeTab(this,'merchant')">
               Merchant Lock
             </li>
-            <li class="tab" onclick="changeTab(this, 'category')">
+            <li class="tab" onclick="changeTab(this,'category')">
               Category Lock
             </li>
           </ul>
@@ -125,12 +126,39 @@
       </div>
     </div>
 
-    <!-- Pagination  -->
+    <!-- Pagination -->
     <div class="pagination" id="pagination">
       <button id="prevBtn" onclick="changePage('prev')">Previous</button>
       <span id="pageInfo"></span>
       <button id="nextBtn" onclick="changePage('next')">Next</button>
     </div>
+
+    <!-- Create Card Popup -->
+    <div id="createCardPopup" class="popup" style="display: none;">
+      <div class="popup-content">
+        <h3>Create Card</h3>
+        <form id="createCardForm">
+          <label for="cardholder">Card Holder:</label>
+          <input type="text" id="cardholder" name="cardholder" required>
+          <label for="card">Card:</label>
+          <input type="text" id="card" name="card" required>
+          <label for="spend">Spend This Month:</label>
+          <input type="text" id="spend" name="spend" required>
+          <label for="type">Type:</label>
+          <select id="type" name="type" required>
+            <option value="Office Card">Office Card</option>
+            <option value="Intern Card">Intern Card</option>
+            <option value="Service Card">Service Card</option>
+            <option value="Frozen">Frozen</option>
+          </select>
+          <label for="account">Account:</label>
+          <input type="text" id="account" name="account" required>
+          <button type="submit">Save</button>
+          <button type="button" id="closePopupBtn">Cancel</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="Cards.js"></script>
   </body>
 </html>
-<script src="Cards.js"></script>
