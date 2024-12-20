@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <link rel="stylesheet" href="Payment.css">
+</head>
+<body>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="header">
+      <input
+        type="text"
+        class="search-bar"
+        placeholder="Search cards or more"
+      />
+      <button class="move-money-btn" onclick="handleMoveMoney()">
+        Move Money &#9662;
+      </button>
+      <div class="avatar">JB</div>
+    </div>
+
+    <!-- Cards Header -->
+    <div class="cards-header">
+      <h2>Cards</h2>
+      <button class="create-card-btn" id="createCardBtn">+ Create Card</button>
+    </div>
+
+    <div class="logo-container">
+      <img src="https://cdn-development.mercury.com/demo-assets/avatars/mercury-demo-dark.png" alt="Mercury Logo">
+      <span class="logo-text">Mercury Demo</span>
+    </div>
+    <div class="user-badge">
+      <div class="initials" id="userInitials"></div>
+      <div class="user-name" id="userFullName"></div>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="container" id="userDetails"></div>
+
+  <!-- External JavaScript -->
+  <script src="Payment.js"></script>
+</body>
+</html>

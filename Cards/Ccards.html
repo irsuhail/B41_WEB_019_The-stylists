@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Card Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr; 
+      height: 100vh;
+      background-color: #f9f9f9;
+      position: relative; 
+    }
+    .logo-container {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      align-items: center;
+    }
+    .logo-container img {
+      width: 40px; 
+      margin-right: 10px;
+    }
+    .logo-container h1 {
+      font-size: 24px;
+      color: black;
+      margin: 0;
+    }
+    .left-side {
+      background-color: #fff; 
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: start;
+      padding: 22px;
+      margin-top: 80px;
+      margin-left:5px;
+    }
+    .left-side h2 {
+      text-align: center;
+    }
+    .section {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 10px;
+      padding: 25px;
+      width: 100%;
+    }
+    .section label {
+      font-size: 16px;
+      color: #555;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .section input,
+    .section select {
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 80%; 
+      max-width: 300px;
+    }
+    .section input[type="radio"] {
+      width: 15px; 
+      height: 18px;
+      margin: 8px;
+    }
+    .section .radio-group {
+      display: flex;
+      align-items: center;
+    }
+    .section .radio-group label {
+      margin-left: 5px;
+      font-size: 14px;
+      color: #555;
+      padding: 0;
+    }
+    .section .form-note {
+      font-size: 12px;
+      color: #777;
+      margin-top: 5px;
+    }
+    .submit-btn {
+      display: block;
+      background-color: #007bff;
+      color: #fff;
+      padding: 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px; 
+      width: 80%; 
+      max-width: 300px;
+      cursor: pointer;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+    .right-side {
+      background-color: #f9f9f9; 
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo-container">
+    <img src="D:\Github Repo\Raj\mercury.jpeg.jpg" alt="Logo">
+    <h1>Mercury Demo</h1>
+  </div>
+
+  <div class="left-side">
+    <h2>Create a Card</h2>
+    <form>
+      <div class="section">
+        <label for="cardholder">Cardholder</label>
+        <select id="cardholder">
+          <option>Jane Black</option>
+        </select>
+      </div>
+
+      <div class="section">
+        <label for="nickname">Nickname</label>
+        <input type="text" id="nickname" placeholder="e.g. Lunch Card">
+      </div>
+
+      <div class="section">
+        <label>Credit or Debit</label>
+        <fieldset>
+          <div class="radio-group">
+            <input type="radio" id="credit" name="type" value="credit" checked>
+            <label for="credit">Credit</label>
+          </div>
+          <div class="radio-group">
+            <input type="radio" id="debit" name="type" value="debit">
+            <label for="debit">Debit</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="section">
+        <label>Virtual or Physical</label>
+        <fieldset>
+          <div class="radio-group">
+            <input type="radio" id="virtual" name="card-type" value="virtual" checked>
+            <label for="virtual">Virtual</label>
+          </div>
+          <div class="radio-group">
+            <input type="radio" id="physical" name="card-type" value="physical">
+            <label for="physical">Physical</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="section">
+        <label for="spend-controls">Spend Controls</label>
+        <select id="spend-controls">
+          <option>None</option>
+          <option>Merchant Lock</option>
+          <option>Category Lock</option>
+        </select>
+      </div>
+
+      <div class="section">
+        <label for="limit-type">Limits</label>
+        <select id="limit-type">
+          <option>Daily</option>
+          <option>Weekly</option>
+          <option>Monthly</option>
+        </select>
+      </div>
+
+      <div class="section">
+        <label for="daily-limit">Daily Spending Limit</label>
+        <input type="text" id="daily-limit" value="$1,000">
+      </div>
+
+      <div class="section">
+        <label for="expiration">Expiration</label>
+        <input type="checkbox" id="expiration">
+        <p class="form-note">Default is 5 years, or set to expire sooner</p>
+      </div>
+
+      <button type="submit" class="submit-btn">Create Card</button>
+    </form>
+  </div>
+
+  <div class="right-side"></div> 
+</body>
+</html>

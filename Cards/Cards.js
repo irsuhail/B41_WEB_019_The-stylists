@@ -204,6 +204,8 @@ document
 
     UserCard.push(newCard);
 
+    UserCard.push(newCard);
+
     // Update the table with the new card
     const tableBody = document.getElementById("cardsBody");
     const row = document.createElement("tr");
@@ -225,28 +227,6 @@ document
     document.getElementById("createCardPopup").style.display = "none";
   });
 
-// Function to populate the table dynamically
-function populateTable(data) {
-  const tableBody = document.getElementById("cardsBody");
-
-  // Loop through the data and create table rows
-  data.forEach((card) => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-          <td>${card.cardholder_Name}</td>
-          <td>${card.card}</td>
-          <td>${card.Spend_This_Month}</td>
-          <td>${card.Card_Category}</td>
-          <td>${card.Card_Account}</td>
-      `;
-
-    tableBody.appendChild(row);
-  });
-}
-
-// Call the function to populate the table
-populateTable(UserCard);
-
 // Adding Usercard data in local Storage
 function saveToLocalStorage() {
   const key = "userCardsData"; // Key for localStorage
@@ -256,42 +236,35 @@ function saveToLocalStorage() {
 // Call the function to save the data
 saveToLocalStorage();
 
+let currentPage = 1;
+const itemsPerPage = 15;
 
-
-
-
-
-
-
-
-
-
-
-
-
-let currentPage = 1; // Track current page
-const itemsPerPage = 15; // Number of items to display per page
-
-// Filter and Search Functionality (same as before)
+// Filter and Search Functionalit
 function filterAndSearchCards() {
   const searchInput = document.querySelector(".search-bar").value.toLowerCase();
-  const filterType = document.querySelector('input[name="type"]:checked')?.value || "either";
+  const filterType =
+    document.querySelector('input[name="type"]:checked')?.value || "either";
   const selectedAccounts = Array.from(
     document.querySelectorAll(".account-checkbox:checked")
-  ).map((checkbox) => checkbox.nextElementSibling.textContent.trim().toLowerCase());
+  ).map((checkbox) =>
+    checkbox.nextElementSibling.textContent.trim().toLowerCase()
+  );
 
-  // Apply filters
+  //  filters
   const filteredCards = UserCard.filter((card) => {
     const matchesSearch =
       card.cardholder_Name.toLowerCase().includes(searchInput) ||
       card.card.toLowerCase().includes(searchInput);
 
     const matchesType =
-      filterType === "either" || card.Card_Category.toLowerCase() === filterType;
+      filterType === "either" ||
+      card.Card_Category.toLowerCase() === filterType;
 
     const matchesAccount =
       selectedAccounts.length === 0 ||
-      selectedAccounts.some((account) => card.Card_Account.toLowerCase().includes(account));
+      selectedAccounts.some((account) =>
+        card.Card_Account.toLowerCase().includes(account)
+      );
 
     return matchesSearch && matchesType && matchesAccount;
   });
@@ -367,17 +340,29 @@ function changePage(direction) {
 }
 
 // Event Listeners for Search and Filters
-document.querySelector(".search-bar").addEventListener("input", filterAndSearchCards);
+document
+  .querySelector(".search-bar")
+  .addEventListener("input", filterAndSearchCards);
 document.querySelectorAll(".filter-popup input").forEach((input) => {
   input.addEventListener("change", filterAndSearchCards);
 });
 
-// Populate Table Function (for initial data population)
+// Function to handle row clicks
+function handleRowClick(user) {
+  // Save the clicked user data to localStorage
+  localStorage.setItem("selectedUserCard", JSON.stringify(user));
+  // Log the data to console to confirm it is stored in localStorage
+  console.log("Selected user card saved to localStorage:", user);
+  // Redirect to payment.html
+  window.location.href = "../Paymet/payment.html";
+}
+
+// Populate Table Function (updated for row click)
 function populateTable(data) {
   const tableBody = document.getElementById("cardsBody");
   tableBody.innerHTML = ""; // Clear existing table rows
 
-  data.forEach((card) => {
+  data.forEach((card, index) => {
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${card.cardholder_Name}</td>
@@ -386,11 +371,12 @@ function populateTable(data) {
       <td>${card.Card_Category}</td>
       <td>${card.Card_Account}</td>
     `;
+
+    // Add click event listener to the row
+    row.addEventListener("click", () => handleRowClick(card));
     tableBody.appendChild(row);
   });
 }
 
 // Initial Population of Table with the first page
 populateTable(UserCard.slice(0, itemsPerPage));
-
-
