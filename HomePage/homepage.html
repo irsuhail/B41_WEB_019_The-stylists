@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./homepage.css" />
+    <script
+      src="https://kit.fontawesome.com/c7d87391e0.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- Top Navigation -->
+    <div class="top-nav">
+      <input type="text" class="search-bar" placeholder="Search or jump to" />
+      <button class="move-money-btn">Move Money &#9662;</button>
+      <div class="user-profile">
+        <div class="user-avatar">JB</div>
+      </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div class="dashboard">
+      <h1>Welcome, Jane</h1>
+      <div class="button-section">
+        <button class="action-btn primary">
+          <i class="fas fa-paper-plane"></i> Send
+        </button>
+        <button class="action-btn">
+          <i class="fas fa-arrow-circle-left"></i> Request
+        </button>
+        <button class="action-btn">
+          <i class="fas fa-exchange-alt"></i> Transfer
+        </button>
+        <button class="action-btn">
+          <i class="fas fa-plus-circle"></i> Deposit
+        </button>
+        <button class="action-btn">
+          <i class="fas fa-money-check-alt"></i> Pay Bill
+        </button>
+        <button class="action-btn">
+          <i class="fas fa-file-invoice"></i> Create Invoice
+        </button>
+        <span class="customize">: Customize</span>
+      </div>
+
+      <div class="main-content">
+        <!-- Balance Section -->
+        <div class="balance-card">
+          <h2>Mercury Balance</h2>
+          <div class="balance">
+            <h3>$5,070,312.01</h3>
+            <p>December 17, 2024</p>
+            <p class="negative-change">- $135,682.10</p>
+          </div>
+          <div class="chart-placeholder">[Chart Placeholder]</div>
+        </div>
+        <!-- Accounts Section -->
+        <div class="accounts-card">
+          <h2>Accounts</h2>
+          <ul class="accounts-list">
+            <li>
+              <img
+                src="https://cdn-development.mercury.com/demo-assets/avatars/mercury-demo-dark.png"
+                alt="Credit Card Logo"
+                class="account-logo"
+              />
+              <span>Credit Card</span>
+              <span class="amount">$12,505.87</span>
+            </li>
+            <li>
+              <img
+                src="https://cdn-development.mercury.com/demo-assets/avatars/mercury-demo-dark.png"
+                alt="Treasury Logo"
+                class="account-logo"
+              />
+              <span>Treasury</span>
+              <span class="amount">$200,000.00</span>
+            </li>
+            <li>
+              <img
+                src="https://cdn-development.mercury.com/demo-assets/avatars/mercury-demo-dark.png"
+                alt="Ops/Payroll Logo"
+                class="account-logo"
+              />
+              <span>Ops / Payroll</span>
+              <span class="amount">$2,023,267.12</span>
+            </li>
+            <li>
+              <img
+                src="https://cdn-development.mercury.com/demo-assets/avatars/mercury-demo-dark.png"
+                alt="AP Logo"
+                class="account-logo"
+              />
+              <span>AP</span>
+              <span class="amount">$0.00</span>
+            </li>
+            <li>
+              <img
+                src="https://cdn-development.mercury.com/demo-assets/avatars/mercury-demo-dark.png"
+                alt="AR Logo"
+                class="account-logo"
+              />
+              <span>AR</span>
+              <span class="amount">$0.00</span>
+            </li>
+          </ul>
+
+          <button class="view-accounts-btn">View all accounts</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Home Cards -->
+    <div class="home-cards-container">
+      <div class="home-card">
+        <h3>Credit Card</h3>
+        <p class="home-amount" style="border: 1px solid black">$12,505.87</p>
+
+        <div class="balance-details">
+          <p><span class="dot balance-dot"></span> Balance</p>
+          <p><span class="dot pending-dot"></span> Pending</p>
+          <p>$21,249 available</p>
+        </div>
+        <div class="autopay">
+          <p><i class="fas fa-sync-alt"></i> Autopay</p>
+          <p>Dec 26</p>
+        </div>
+        <button class="pay-btn">Pay</button>
+      </div>
+
+      <div class="home-card">
+        <h3>Bill Pay</h3>
+        <div class="bill-details">
+          <p>Outstanding <span>11</span></p>
+          <p>Overdue <span>1</span></p>
+          <p>Due Soon <span>-</span></p>
+        </div>
+        <hr />
+        <div class="inbox">
+          <p>Inbox <span>3 bills</span></p>
+        </div>
+        <a href="#" class="view-link">View &gt;</a>
+      </div>
+
+      <div class="home-card">
+        <h3>Invoicing</h3>
+        
+        <div class="invoice-details">
+          <p>Overdue <span>4 - $950.00</span></p>
+          <p>Paid <span>12 - $6K</span></p>
+        </div>
+        <hr>
+        <div class="open-invoices">
+          <p>Open <span>12 invoices · $12.3K</span></p>
+        </div>
+        <a href="#" class="view-link">View &gt;</a>
+      </div>
+    </div>
+  </body>
+  <script src="./homepage.js"></script>
+</html>
