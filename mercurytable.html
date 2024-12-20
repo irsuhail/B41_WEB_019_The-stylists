@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recent Transactions</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.arrow {
+    color: grey;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+}
+
+th {
+    font-weight: normal;
+    color: #888;
+}
+
+tr:not(:first-child):hover {
+    background-color: #f9f9f9;
+}
+
+.positive {
+    color: green;
+}
+
+.negative {
+    color: red;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.circle {
+    background-color: #e0e4ff;
+    color: #5567dd;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.red {
+    background-color: #fce3e3;
+    color: #ff5b5b;
+}
+
+.small-img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">Recent transactions <span class="arrow">></span></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>To/From</th>
+                    <th>Amount</th>
+                    <th>Account</th>
+                    <th>Payment Method</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Row 1 -->
+                <tr>
+                    <td>Dec 18</td>
+                    <td>
+                        <div class="flex">
+                            <div class="icon circle">P</div>
+                            Payment from Acme Corp
+                        </div>
+                    </td>
+                    <td class="positive">$200<sup>.00</sup></td>
+                    <td>AR</td>
+                    <td>
+                        <div class="flex method">
+                            <span class="arrow-right">→</span> Request or Invoice Pay...
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 2 -->
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="flex">
+                            <img src="https://cdn-development.mercury.com/demo-assets/avatars/mercury-demo-dark.png" alt="Ops Payroll" class="small-img">
+                            To Ops / Payroll
+                        </div>
+                    </td>
+                    <td class="negative">−$54,810<sup>.16</sup></td>
+                    <td>AR</td>
+                    <td>
+                        <div class="flex method">
+                            <span class="arrow-left">←</span> Transfer
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 3 -->
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="flex">
+                            <img src="https://cdn-development.mercury.com/demo-assets/avatars/mercury-demo-dark.png" alt="From AR" class="small-img">
+                            From AR
+                        </div>
+                    </td>
+                    <td class="positive">$54,810<sup>.16</sup></td>
+                    <td>Ops / Payroll</td>
+                    <td>
+                        <div class="flex method">
+                            <span class="arrow-right">→</span> Transfer
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 4 -->
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="flex">
+                            <div class="icon circle">LE</div>
+                            Lily's Eatery
+                        </div>
+                    </td>
+                    <td class="positive">$0<sup>.93</sup></td>
+                    <td>Ops / Payroll</td>
+                    <td>
+                        <div class="flex">
+                            <img src="https://cdn-icons-png.flaticon.com/128/657/657076.png" alt="Jane B." class="small-img">
+                            Jane B. ••1234
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 5 -->
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="flex">
+                            <div class="icon circle">D7</div>
+                            Deli 77
+                        </div>
+                    </td>
+                    <td class="positive">$6<sup>.91</sup></td>
+                    <td>Credit account</td>
+                    <td>
+                        <div class="flex">
+                            <img src="https://cdn-icons-png.flaticon.com/128/657/657076.png" alt="Jane B." class="small-img">
+                            Jane B. ••5555
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 6 -->
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="flex">
+                            <div class="icon circle">D7</div>
+                            Deli 77
+                        </div>
+                    </td>
+                    <td class="positive">$23<sup>.28</sup></td>
+                    <td>Ops / Payroll</td>
+                    <td>
+                        <div class="flex">
+                            <img src="https://cdn-icons-png.flaticon.com/128/657/657076.png" alt="Landon S." class="small-img">
+                            Landon S. ••4929
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 7 -->
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="flex">
+                            <div class="icon circle">OS</div>
+                            Office Stop Co.
+                        </div>
+                    </td>
+                    <td class="negative">−$287<sup>.89</sup></td>
+                    <td>Ops / Payroll</td>
+                    <td>
+                        <div class="flex">
+                            <img src="https://cdn-icons-png.flaticon.com/128/657/657076.png" alt="Jessica A." class="small-img">
+                            Jessica A. ••9914
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 8 -->
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="flex">
+                            <div class="icon circle red">TJ</div>
+                            Trader John's
+                        </div>
+                    </td>
+                    <td class="positive">$53<sup>.49</sup></td>
+                    <td>Credit account</td>
+                    <td>
+                        <div class="flex">
+                            <img src="https://cdn-icons-png.flaticon.com/128/657/657076.png" alt="Landon S." class="small-img">
+                            Landon S. ••0331
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 9 -->
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="flex">
+                            <div class="icon circle">OS</div>
+                            Office Stop Co.
+                        </div>
+                    </td>
+                    <td class="negative">−$662<sup>.70</sup></td>
+                    <td>Credit account</td>
+                    <td>
+                        <div class="flex">
+                            <img src="https://cdn-icons-png.flaticon.com/128/657/657076.png" alt="Jane B." class="small-img">
+                            Jane B. ••0330
+                        </div>
+                    </td>
+                </tr>
+                <!-- Row 10 -->
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="flex">
+                            <div class="icon circle">OS</div>
+                            Office Stop Co.
+                        </div>
+                    </td>
+                    <td class="positive">$563<sup>.94</sup></td>
+                    <td>Credit account</td>
+                    <td>
+                        <div class="flex">
+                            <img src="https://cdn-icons-png.flaticon.com/128/657/657076.png" alt="Jane B." class="small-img">
+                            Jane B. ••0330
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
