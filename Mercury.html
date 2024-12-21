@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercury | Banking for Startups </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #F4F4F4;
+            display: flex;
+        }
+
+        nav {
+            background-color: #1E1E2E;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 40px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 20;
+        }
+
+        .left-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 17px;
+            letter-spacing: 2px;
+            margin-left: 10px;
+            
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .link {
+            text-decoration: none;
+            color: #fff;
+            margin-left: 20px;
+            font-size: 25px;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+            color: #4285F4;
+        }
+
+        .welcome-text {
+            margin-left: 20px;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .customize-btn {
+                    background-color: #4A4A68;
+                    color: #FFF;
+                    padding: 10px 20px;
+                    border: none;
+                    cursor: pointer;
+                    border-radius: 10px; /* Rounded corners */
+                    font-size: 14px;
+                    display: inline-flex;
+                    align-items: center;
+                    border-radius:25px ;
+                }
+            
+                .customize-btn:hover {
+                    background-color: #6C6C8E;
+                }
+            
+                .icon {
+                    vertical-align: middle;
+                    margin-left: 5px;
+                    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+                }
+
+        .open-btn {
+            background-color: #fff;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .open-btn:hover {
+            
+            background-color: #6C6C8E;
+        }
+
+        #open-account {
+            border-radius: 25px;
+            padding: 10px 15px;
+            background-color: #fff;
+            color: #000;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        #open-account img {
+            width: 16px;
+            height: 16px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* Use flex container for everything */
+        .container {
+            display: flex; /* Align items horizontally */
+            align-items: center; /* Vertically center items */
+            justify-content: space-between; /* Space out items */
+            padding: 20px;
+            margin-top: 60px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 5px 10px;
+            width: 600px;
+            margin-left: 400px;
+            margin-top: -10px;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            width: 100%;
+            padding: 5px;
+        }
+
+        .search-bar input::placeholder {
+            color: #aaa;
+            transition: color 0.3s;
+        }
+
+        .search-bar input:hover::placeholder{
+            color: #666;
+        }
+
+        .search-bar .search-icon {
+            font-size: 16px;
+            color: #666;
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
+
+        .search-bar a {
+            font-size: 12px;
+            color: #666;
+            margin-left: 10px;
+            text-decoration: none;
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .search-bar .ctrl, .search-bar .k {
+            padding: 5px 10px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .search-bar .ctrl:hover, .search-bar .k:hover {
+            background-color: #e0e0e0;
+            color: #333;
+            border-color: #666;
+        }
+
+        .button-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            justify-content: flex-start;
+            margin-top: -10px;
+            margin-right: 220px;
+            margin-left:auto;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9fc;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            padding: 8px 18px;
+            font-size: 15px;
+            color: rgb(49, 49, 203);
+            cursor: pointer;
+            margin-left: 25px;
+        }
+
+        .button img {
+            margin-left: 10px;
+            width: 16px;
+            height: 16px;
+        }
+
+        .bell-icon {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background-color: transparent;
+            transition: background-color 0.3s, transform 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .bell-icon:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.2);
+            border: 2px solid #666;
+        }
+
+        .bell-icon img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50px;
+        }
+
+        .profile-icon {
+            background-color: #cce5e5;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-left: 0px;
+        }
+
+        .profile-icon:hover {
+            background-color: #d6f2f2;
+            transform: scale(1.2);
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            height: 120vh;
+            padding: 20px;
+            position: fixed;
+            top: 55px; /* Adjusted for nav height */
+            left: -25px;
+        }
+
+        .sidebar .header h2 {
+            color: black;
+            font-size: 16px;
+            font-weight: normal;
+            margin-left: 35px;
+        }
+
+        .sidebar .header h2:hover {
+               color:#4285F4;
+        }
+
+        
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap:-30px;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            width: 30px;
+            height: 30px;
+            margin-right: -20px;
+            border-radius: 10px;
+            margin-left: 15px;
+            color: #000;
+           
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: normal;
+            color: #000;
+            margin-left: -10px;
+        }
+
+        .header a {
+            margin-left: 10px;
+        }
+
+        .sidebar h2 {
+            font-weight: normal;
+            color:#888;
+            font-size: 16px;
+            margin-left: 40px;
+            
+        }
+
+        .menu-item {
+            list-style: none;
+            margin-left: 20px;
+            padding-left:0px;
+            margin-top: 15px;
+        }
+
+        .menu-item li {
+            margin: 10px 0;
+        }
+
+        .menu-item a {
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+            gap:15px;
+        }
+
+        .menu-item a img:last-child {
+            margin-left: auto;
+            margin-right: -5px;
+        }
+
+        .menu-item a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .menu-item a span {
+            margin-left: 10px;
+            font-size: 14px;
+        }
+
+        .menu-item .task-badge {
+           background-color: lightblue;
+           color: black;
+           padding:2px 6px;
+           border-radius: 6px;
+           font-size: 12px;
+           margin-left: 65px;
+        }
+
+        .submenu {
+            margin-left: 20px;
+            display: none;
+        }
+
+        .menu-item li.open .submenu {
+            display: block;
+        }
+
+        h2 {
+            font-weight: normal;
+            color:black;
+            font-size: 16px;
+
+        }
+
+        .content {
+            margin-left: 260px;
+            padding: 20px;
+            margin-top: 100px;
+        }
+
+        #S {
+            font-weight: normal;
+            color:#888;
+            font-size: 16px;
+            margin-left: 40px;
+            margin-top: 25px;
+
+        }
+
+        @media screen and (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .welcome-text {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .sidebar {
+                position: relative;
+                height: auto;
+                width: 100%;
+                top: 0;
+            }
+
+            .content {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="left-content">
+            <img src="https://cdn-development.mercury.com/demo-assets/avatars/mercury-demo-dark.png" alt="logo" class="logo-image">
+            <div class="logo">DEMO</div>
+            <p class="welcome-text">Welcome to the Mercury Demo.</p>
+            <a href="https://mercury.com/?utm_source=mercury&utm_medium=demo&_gl=1*qrhxq9*_gcl_au*MjA2NzA4NzYxMy4xNzM0NDIwNjYz*_ga*NzgwODY4ODg4LjE3MzQ0MjA2NjM.*_ga_Z1VQ08VXN5*MTczNDUwNDAwNS40LjAuMTczNDUwNDAwNS4wLjAuMA.." class="link" id="learn-more">
+                <u style="font-size: 16px;">Learn more about Mercury</u>
+                <img src="https://cdn-icons-png.flaticon.com/128/5436/5436306.png" alt="Mercury Icon" class="icon" style="width: 12px; height: 12px; margin-left: -1px;">
+            </a>                        
+        </div>
+        <div class="buttons">
+            <button class="customize-btn" id="customize-demo">
+                Customize Demo
+                <img src="https://cdn-icons-png.flaticon.com/128/17653/17653338.png" alt="Customize Icon" width="16" height="16" class="icon">
+            </button>
+            
+            
+            
+            <button id="open-account">
+                Open Account
+                <img src="https://cdn-icons-png.flaticon.com/128/6020/6020205.png" alt="Right Arrow Icon">
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Search bar -->
+        <div class="search-bar">
+            <img class="search-icon" src="https://cdn-icons-png.flaticon.com/128/17216/17216943.png" alt="Search Icon">
+            <input type="text" placeholder="Search or jump to">
+            <a href="#">
+                <span class="ctrl">Ctrl</span>
+                <span class="k">K</span>
+            </a>
+        </div>
+    
+        <!-- Button group with Move Money, Bell Icon, and JB Profile Icon -->
+        <div class="button-group">
+            <div class="button">Move Money
+                <img src="https://cdn-icons-png.flaticon.com/128/2985/2985150.png" alt="Move Money Icon">
+            </div>
+            <div class="bell-icon">
+                <img src="https://cdn-icons-png.flaticon.com/128/3239/3239952.png" alt="Bell Icon">
+            </div>
+            <div class="profile-icon">JB</div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="header" style="display: flex; align-items: center; margin-left:10px">
+            <img src="https://cdn-development.mercury.com/demo-assets/avatars/mercury-demo-dark.png" alt="Mercury Demo Logo" >
+            <h2>Mercury Demo</h2>
+            <a href="#" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="https://cdn-icons-png.flaticon.com/128/7693/7693521.png" alt="Up and Down Icon" style="width: 12px; height: 12px; margin-left: 5px;">
+            </a>
+        </div>        
+        <ul class="menu-item">
+            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/128/607/607859.png" alt="Home Icon" width="20" height="20"><span>Home</span></a></li>
+            <li>
+                <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/1582/1582527.png" alt="Tasks Icon" width="20" height="20"><span>Tasks</span><span class="task-badge">5</span></a>
+            </li>
+            <li>
+                <a href="#"><img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRqxxKb6OTJWAazH_n1-RZXJ19W49-3r9476VJhfBHqVKTSzeZv" alt="Transactions Icon" width="20" height="20"><span>Transactions</span></a>
+            </li>
+            <li>
+                <a href="#" style="text-decoration: none; display: flex; align-items: center;">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAABcCAMAAADUMSJqAAAAYFBMVEX///8AAABlZWXBwcF1dXXS0tJ7e3t+fn729vaDg4PFxcWGhoaPj4/7+/vKyspycnJcXFzk5OQdHR0+Pj7c3Ny6urrs7OwUFBSqqqqcnJwKCgpUVFQrKysiIiIzMzM4ODgDl0poAAABe0lEQVRoge2Y606DQBBGGRBLgdJSLq3Y6vu/pYSKbHaJoMwh0fD9n5MvswNz8bxNm/6FoqyqKXZ8EZGUYefS6RmBJw+47Aj46ROOeO+dI95zIekxSg8GOpD3YK3MAN7ZvLP07A/nPZzwfhUljXhPtdgj//dajy3nyIIH0zG/h2fTMbNVHCx4dNaDvzgPqmf9aaQU89RfoOZb9jIN/e6ozvZB9ivHjgqOXd+4t8zvHLtsuJwY/3F1dgmyh0EU+C4Pbxzb8wqQ3fdG/Xx36pLObC2tqn2S/TwqbPN5tJuhkh4N+93uhopskSvIFh9kAwVsDEgxyN6DbPVJfiXfCcgmfW85cdnqVyuD3SwZptPcZRt76lI53WNo5Mt1t3uM5qooIQm3/6WHYjpmtpwDbDgdM1fuqqhGv4z2XWNktV9EQYb3CqUDM8Vq9JE3V6QDB32jZoAzHrmgrUhH6x2Ycgf6CYB/1Qwx/PfenSOekkr/fttBC1eriENv2rSuPgA7yA/4zULDcAAAAABJRU5ErkJggg==" alt="Payments Icon" width="20" height="20">
+                    <span>Payments</span>
+                    <img src="https://cdn-icons-png.flaticon.com/128/6020/6020221.png" alt="Right Icon" width="20" height="20">
+                </a>
+                <ul class="submenu">
+                    <li><a href="#">Request</a></li>
+                    <li><a href="#">Recipients</a></li>
+                    <li><a href="#">Wire Drawdowns</a></li>
+                    <li><a href="#">ACH Authorizations</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#"><i class="fa-regular fa-credit-card"></i><span>Cards</span></a>
+            </li>
+            <li>
+                <a href="#"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvimBNk-n4vIjKnmhinkg_O7Mw3cIGnKRiDg&s" alt="Capital Icon" width="20" height="20"><span>Capital</span></a>
+            </li>
+            <li>
+                <a href="#" style="text-decoration: none; display: flex; align-items: center;">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3635/3635987.png" alt="Accounts Icon" width="20" height="20">
+                    <span style="margin-right: 10px;">Accounts</span>
+                    <img src="https://cdn-icons-png.flaticon.com/128/6020/6020221.png" alt="Right Icon" width="20" height="20">
+                </a>
+                
+                <ul class="submenu">
+                    <li><a href="#">Credit Card</a></li>
+                    <li><a href="#">Treasury</a></li>
+                    <li><a href="#">Ops / Payroll</a></li>
+                    <li><a href="#">AP</a></li>
+                    <li><a href="#">AR</a></li>
+                    <li><a href="#">Checking**0297</a></li>
+                    <li><a href="#">Savings**7658</a></li>
+                </ul>
+            </li>
+        </ul>
+        <h2 id="S">Workflows</h2>
+        <ul class="menu-item">
+            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/128/4393/4393152.png" alt="Bill Pay Icon" width="20" height="20"><span>Bill Pay</span></a></li>
+            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/128/522/522575.png" alt="Invoicing Icon" width="20" height="20"><span>Invoicing</span></a></li>
+            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/128/18440/18440896.png" alt="Reimbursements Icon" width="20" height="20"><span>Reimbursements</span>
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAclBMVEX///8AAP+iov/n5/+Ojv++vv89Pf+cnP9vb/+Wlv95ef/19f/V1f+7u/+5uf9ZWf8kJP/w8P+rq/8vL/9oaP/MzP9hYf/b2/9RUf/Q0P+0tP+Kiv9DQ//Gxv9VVf8iIv9/f/82Nv/k5P8VFf9lZf+mpv9MJ/cMAAABZUlEQVR4nO3ZWVLCQBQFUBtQUVBwQJxn979FUT+ckvRHt/VM6pwV3FtJenjZ2gIAAAAAAAAAAAAAAP6v8fH0JG0sT0fj6Cx/YXWWvrjdjs5T2/o8/bBzEZ2pqsuf/d7sRqeq6KqpYErT6FzV7DUXTGk/Olkl220FUxpFZ6viqL1gSvPodDWcdTW8jk5XwbqrYEo30fnK7Xc3vI3OV2x2190wzaITlppnCqaD6ISlXnINJ9EJS93nGvb+Q8wsNJsTeHTCUtNcw4fohKWyz7D3e/4k1/A0OmGpw1zD3h++H3MN+3/Vv840jM5XrnGA8WkvOl8FT50Nj6LjVdC51gxjGrVoL9j7A82H2bK14VBm349td8RBTGnejZuf4jo6V00NB/DFEJbRL1YP3/ste3+3/201/dwZnwf36+nDbP4y2RhdDOz9BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+OdeAanZCTHcyKoIAAAAAElFTkSuQmCC" alt="Right Icon" width="20" height="20" style="margin-left: 5px;">
+            </a></li>            
+            <li><a href="#"><img src="https://cdn-icons-png.flaticon.com/128/16968/16968673.png" alt="Accounting Icon" width="20" height="20"><span>Accounting</span></a></li>
+        </ul>
+    </div>
+
+    <script>
+        document.querySelectorAll('.menu-item li').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>
