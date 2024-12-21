@@ -1,13 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Account</title>
-    <link rel="stylesheet" href="sign.css">
+    <title>Open Account Page</title>
+    <style>
+      :root {
+        --background: #e5e7f3;
+        --foreground: #111;
+        --card: #fff;
+        --border: #ddd;
+        --ring: #aaa;
+        --muted: #666;
+        --primary-filled: #5266eb; 
+        --primary-empty: #d1d5f8; 
+        --primary-foreground: #fff;
+        --form-background: #fafbfd; 
+      }
 
-</head>
-<body>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: var(--background);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        background-color: var(--card);
+        padding: 30px; 
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 500px; 
+        width: 100%;
+      }
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background-color: var(--background);
+        z-index: 100;
+      }
+
+      .header img {
+        height: 40px;
+        width: 40px;
+        cursor: pointer;
+      }
+
+      .header a {
+        color: black;
+        text-decoration: none;
+        font-size: 16px; 
+        font-weight: 750; 
+      }
+
+      .header a:hover {
+        text-decoration: underline;
+      }
+
+      h1 {
+        font-size: 24px;
+        font-weight: 400;
+        color: var(--foreground);
+      }
+
+      p {
+        color: var(--muted);
+        margin-bottom: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .half {
+        width: 48%;
+        display: inline-block;
+        vertical-align: top;
+      }
+
+      label {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--muted); 
+        margin-bottom: 5px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+      input:focus {
+        border-color: var(--ring);
+        outline: none;
+      }
+
+      small {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .submit-container {
+        margin-top: 20px;
+        text-align: left;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-empty); 
+        color: var(--primary-foreground);
+        padding: 8px 16px;
+        border-radius: 15px;
+        border: none; 
+        cursor: not-allowed; 
+        font-size: 14px;
+        width: auto;
+        letter-spacing: 2px;
+      }
+
+      .btn-primary.enabled {
+        background-color: var(--primary-filled); 
+        cursor: pointer;
+      }
+
+      .footer {
+        margin-top: 20px;
+        font-size: 15px;
+        color: var(--muted);
+      }
+
+      .footer a {
+        color: var(--foreground);
+        text-decoration: underline;
+      }
+
+      form {
+        background-color: var(--form-background);
+        padding: 15px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
     <div class="header">
       <a href="#"><img src="D:\Github Repo\Raj\mercury.jpeg.jpg" alt="Mercury Logo" /></a>
       <a href="file:///D:/Github%20Repo/Raj/Ldata.html">Log In ></a>
@@ -43,6 +188,67 @@
         and acknowledge receipt of <a href="#">Mercury’s USA PATRIOT Act disclosure</a>.
       </p>
     </div>
-</body>
+    <script>
+      const form = document.getElementById('application-form');
+      const inputs = form.querySelectorAll('input');
+      const passwordInput = document.getElementById('password');
+      const button = form.querySelector('.btn-primary');
+
+      // Clear inputs on page load
+      window.addEventListener('load', () => {
+        form.reset(); // Clear form
+        localStorage.removeItem('formData'); // Remove saved data from localStorage
+      });
+
+      // Load existing data from localStorage, ensure it's an array
+      let storedData = JSON.parse(localStorage.getItem('formData'));
+      if (!Array.isArray(storedData)) {
+        storedData = []; // Initialize an empty array if the data is not an array
+      }
+
+      function checkFormValidity() {
+        const allFilled = Array.from(inputs).every(input => input.value.trim() !== '');
+        const passwordValid = passwordInput.value.length >= 10; // Check if the password is at least 10 characters long
+
+        if (allFilled && passwordValid) {
+          button.classList.add('enabled');
+          button.removeAttribute('disabled');
+        } else {
+          button.classList.remove('enabled');
+          button.setAttribute('disabled', 'true');
+        }
+      }
+
+      function storeFormData() {
+        const formData = {
+          firstName: document.getElementById('first-name').value,
+          lastName: document.getElementById('last-name').value,
+          email: document.getElementById('email').value,
+          password: document.getElementById('password').value
+        };
+
+        // Append new form data to existing stored data
+        storedData.push(formData);
+        localStorage.setItem('formData', JSON.stringify(storedData));
+        window.location.href = 'file:///D:/Github%20Repo/Raj/Ldata.html';
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        if (passwordInput.value.length >= 10) {
+          storeFormData();
+        } else {
+          alert('Password must be at least 10 characters long!');
+        }
+        document.getElementById("application-form").reset()
+      });
+
+
+
+      inputs.forEach(input => {
+        input.addEventListener('input', checkFormValidity);
+      });
+    </script>
+  </body>
 </html>
-<script src="sign.js"></script>
