@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="C.css">
+</head>
+<body>
+    <div class="form-container">
+      <h2 class="form-title">Customize Demo</h2>
+      <p class="form-subtitle">Fill out the form to get your demo link.</p>
+  
+      <form id="demoForm">
+        <div class="form-group">
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" required>
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" required>
+        </div>
+        <div class="form-group">
+          <label for="industry">Industry</label>
+          <select id="industry">
+            <option value="">Select Industry</option>
+            <option value="Startup">Startup</option>
+            <option value="Ecommerce">Ecommerce</option>
+            <option value="Crypto">Crypto</option>
+            <option value="Consulting">Consulting</option>
+            <option value="Investing">Investing</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="balance">Account Balance</label>
+          <input type="text" id="balance" placeholder="$">
+        </div>
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="emails">
+          <label for="emails">I'd like to receive Mercury emails</label>
+        </div>
+        <div class="form-footer">
+          <button type="button" class="btn btn-cancel">Cancel</button>
+          <button type="submit" class="btn btn-submit" disabled>Submit</button>
+        </div>
+      </form>
+    </div>
+</body>
+</html>
+<script src="C.js"></script>
